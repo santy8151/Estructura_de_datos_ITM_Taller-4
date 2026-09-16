@@ -1,0 +1,77 @@
+@page "/"
+@using Backend
+
+<PageTitle>Expression Evaluator — Taller 4</PageTitle>
+
+<div class="calculator-wrapper">
+    <h1 class="title">Expression Evaluator</h1>
+    <p class="subtitle">Infix → Postfix (Shunting-yard algorithm)</p>
+
+    <div class="calc-display">@(_display)</div>
+
+    <div class="calc-grid">
+        @foreach (var btn in _buttons)
+        {
+            var label  = btn.Label;
+            var cls    = btn.Class;
+            var span   = btn.Span;
+            <button class="calc-btn @cls"
+                    style="grid-column: span @span"
+                    @onclick="() => OnClick(label)">@label</button>
+        }
+    </div>
+</div>
+
+@code {
+    private string _expression = string.Empty;
+    private string _display    = string.Empty;
+
+    private record BtnDef(string Label, string Class = "", int Span = 1);
+
+    private readonly BtnDef[] _buttons =
+    [
+        new("7"), new("8"), new("9"), new("(", "op"), new(")", "op"), new("Delete", "op", 2),
+        new("4"), new("5"), new("6"), new("*", "op"), new("/", "op"), new("Clear", "op", 2),
+        new("1"), new("2"), new("3"), new("+", "op"), new("-", "op"), new("^", "op", 2),
+        new("0", "", 2), new(".", ""), new("=", "eq", 4),
+    ];
+
+    private void OnClick(string key)
+    {
+        switch (key)
+        {
+            case "Clear":
+                _expression = string.Empty;
+                _display    = string.Empty;
+                break;
+
+            case "Delete":
+                if (_expression.Length > 0)
+                    _expression = _expression[..^1];
+                _display = _expression;
+                break;
+
+            case "=":
+                try
+                {
+                    if (!string.IsNullOrWhiteSpace(_expression))
+                    {
+                        double result = ExpressionEvaluator.Evalute(_expression);
+                        _display    = $"{_expression} = {result:N5}";
+                        _expression = result.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    }
+                }
+                catch
+                {
+                    _display    = "Error — invalid expression";
+                    _expression = string.Empty;
+                }
+                break;
+
+            default:
+                _expression += key;
+                _display     = _expression;
+                break;
+        }
+    }
+}

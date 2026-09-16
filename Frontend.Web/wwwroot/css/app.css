@@ -1,0 +1,53 @@
+/* ── Calculator Shell ─────────────────────────────────── */
+.calculator-wrapper {
+    max-width: 420px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #1a1a1a;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,.6);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #fff;
+}
+
+.title    { text-align: center; font-size: 1.4rem; margin: 0 0 .25rem; }
+.subtitle { text-align: center; color: #aaa; font-size: .85rem; margin: 0 0 1rem; }
+
+/* ── Display ──────────────────────────────────────────── */
+.calc-display {
+    background: #114411;
+    color: #7fff7f;
+    font-size: 1.5rem;
+    min-height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    border-radius: .5rem;
+    text-align: right;
+    word-break: break-all;
+    margin-bottom: 1rem;
+    border: 1px solid #2a5f2a;
+}
+
+/* ── Button Grid (7 columns) ─────────────────────────── */
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: .45rem;
+}
+
+.calc-btn {
+    padding: .75rem .25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    background: #e0e0e0;
+    color: #111;
+    transition: filter .1s;
+}
+.calc-btn:hover  { filter: brightness(.88); }
+.calc-btn:active { filter: brightness(.75); }
+
+.calc-btn.op { background: #e67e22; color: #fff; }
+.calc-btn.eq { background: #27ae60; color: #fff; font-size: 1.3rem; }

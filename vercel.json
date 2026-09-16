@@ -1,0 +1,11 @@
+{
+  "buildCommand": "curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 10.0 && export PATH=\"$HOME/.dotnet:$PATH\" && dotnet publish Frontend.Web/Frontend.Web.csproj -c Release -o dist",
+  "outputDirectory": "dist/wwwroot",
+  "framework": {
+    "name": "@vercel/static",
+    "version": "0.x"
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
