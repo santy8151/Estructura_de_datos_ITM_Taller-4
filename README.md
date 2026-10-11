@@ -1,13 +1,8 @@
-# Expression Evaluator — Taller 4 (Stacks / Pilas)
 
-> **Course:** Estructura de Datos — ITM  
-> **Topic:** Stacks applied to infix-to-postfix expression evaluation (Shunting-yard algorithm)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/santy8151/Estructura_de_datos_ITM_Taller-4)
 
 ## Live Demo
 
-🌐 **[Open the calculator on Vercel →](https://estructura-de-datos-itm-taller-4.vercel.app)**
+🌐 **[Open the calculator on netlify →]()**
 
 ---
 
